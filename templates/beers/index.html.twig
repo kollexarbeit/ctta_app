@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BeersController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .beer-image {height: 64px;}
+    .beers-table td {border: 1px solid black; padding: 10px;}
+    .beers-header td {font-weight: bold; font-size: +2em}
+</style>
+
+<div class="example-wrapper">
+    <table class="beers-table">
+        <tr class="beers-header">
+            <td>
+                Name
+            </td>
+            <td>
+                Tagline
+            </td>
+            <td>
+                Image
+            </td>
+            <td>
+                ABV
+            </td>
+        </tr>
+        {% for beer in beers %}
+        <tr>
+            <td>
+                <a href="/beer/{{beer.apiId}}" >{{ beer.name }}</a>
+            </td>
+            <td>
+                {{ beer.tagline }}
+            </td>
+            <td>
+                <img src="{{ beer.imageUrl }}" class="beer-image"/>
+            </td>
+            <td>
+                {{ beer.abv }}%
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    TODO:: PAGINATION HERE
+</div>
+{% endblock %}
